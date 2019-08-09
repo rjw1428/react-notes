@@ -6,3 +6,10 @@
     padding: 16px;
     text-align: center;
 }
+
+@media (max-width: 800px) {
+    .Person {
+        width: 200px;
+        background: green;
+    }
+}

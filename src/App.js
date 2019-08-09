@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 // import React, { useState } from 'react'
-import './App.css';
+import styles from './App.css';
 import Person from './Person/Person'
-import Radium, { StyleRoot }from 'radium'
+// import Radium, { StyleRoot }from 'radium'
 
 // class App extends Component {
 //   state = {
@@ -145,11 +145,13 @@ class App extends Component {
       padding: '8px',
       cursor: 'pointer',
       color: 'white',
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        borderWidth: '3px'
-      }
+      // ':hover': {
+      //   backgroundColor: 'lightgreen',
+      //   borderWidth: '3px'
+      // }
     }
+
+    let btnClass='';
 
     if (this.state.showPersons) {
       list = (
@@ -164,33 +166,36 @@ class App extends Component {
           })}
         </div>
       )
-      style.backgroundColor='red',
-      style[':hover'] = {
-        backgroundColor:'salmon',
-        borderWidth: '3px'
-      }
+      style.backgroundColor='red'
+      // style[':hover'] = {
+      //   backgroundColor:'salmon',
+      //   borderWidth: '3px'
+      // }
+      btnClass=styles.Red
     } 
 
     // let classes=['red','bold'].join(' ');
     let classes=[]
     if (this.state.persons.length <=2) {
-      classes.push('red')
+      classes.push( styles.red)
     }
     if (this.state.persons.length <=1) {
-      classes.push('bold')
+      classes.push( styles.bold)
     }
     return (
-      <StyleRoot>
-      <div className="App">
+      // <StyleRoot>
+      <div className={ styles.App}>
         <h1>Woo! Look at this React app</h1>
         <p className={classes.join(' ')}>This is some description text.</p>
         <button 
+        className={btnClass}
         onClick={this.toggleNamesHandler}
         style={style}>Toggle</button>
         {list}
       </div>
-      </StyleRoot>
+      // </StyleRoot>
     );
   }
 }
-export default Radium(App);
+// export default Radium(App);
+export default App
