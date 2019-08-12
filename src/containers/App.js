@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import React, { useState } from 'react'
 import styles from './App.css';
-import Person from './Person/Person'
+import Person from '../components/Persons/Person/Person'
 // import Radium, { StyleRoot }from 'radium'
 
 // class App extends Component {
