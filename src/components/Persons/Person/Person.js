@@ -9,6 +9,7 @@ const person = (props) => {
     //        background: 'green'
     //     }
     // }
+    console.log(props.name+" is rendering...")
     return (
         // <div className={'Person'} style={style}>  
         <div className={styles.Person}> 
