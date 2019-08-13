@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styles from './App.css';
-import Persons from '../components/Persons/Perons'
+import Persons from '../components/Persons/Persons'
 import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
@@ -13,7 +13,7 @@ class App extends Component {
         { id: '456', name: "Gina" },
         { id: '789', name: "Joe" }
       ],
-      showPersons: true
+      showPersons: false
     }
   }
 
@@ -74,7 +74,7 @@ class App extends Component {
       </div>
     );
   }
-  
+
   componentDidMount() {
     console.log('App.js componentDidMount')
   }
