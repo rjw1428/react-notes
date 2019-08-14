@@ -1,17 +1,17 @@
-import React, { Component } from 'react'
+import React, { Component, PureComponent } from 'react'
 import Person from './Person/Person'
 
 // const persons = (props) => props.persons.map((person, index) => {
-class Persons extends Component {
+class Persons extends PureComponent {
     // static getDerivedStateFromProps(props, state) {
     //     console.log("Persons.js getDerivedStateFromProps")
     //     return state
     // }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        console.log("Persons.js shouldComponentUpdate")
-        return nextProps.persons !== this.props.persons //Shallow vs Deep comparison of lists
-    }
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     console.log("Persons.js shouldComponentUpdate")
+    //     return nextProps.persons !== this.props.persons //Shallow vs Deep comparison of lists
+    // }
 
     getSnapshotBeforeUpdate(prevProps, prevState) {
         console.log('Persons.js getSnapshotBeforeUpdate')
