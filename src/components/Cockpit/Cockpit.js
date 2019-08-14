@@ -3,9 +3,18 @@ import classes from './Cockpit.css'
 
 
 const cockpit = (props) => {
+    // useEffect(() => {
+    //     console.log('Cockpit.js useEffect()')
+    //     setTimeout(()=>{
+    //         alert('Fetch Data From Cloud')
+    //     }, 1000)
+    // }, [props.persons]) //What state change triggers this effect
     useEffect(() => {
         console.log('Cockpit.js useEffect()')
-    })
+        setTimeout(()=>{
+            alert('Fetch Data From Cloud')
+        }, 1000)
+    }, [])
     const assignedClasses = [];
     let btnClass = []
     if (props.showPersons) {
