@@ -13,7 +13,8 @@ class App extends Component {
         { id: '456', name: "Gina" },
         { id: '789', name: "Joe" }
       ],
-      showPersons: false
+      showPersons: false,
+      showCockpit: true,
     }
   }
 
@@ -77,12 +78,17 @@ class App extends Component {
 
     return (
       <div className={styles.App}>
-        <Cockpit
+        <button onClick={()=>{
+          this.setState({showCockpit:false})
+          }}>Remove Cockpit
+        </button>
+        {this.state.showCockpit?(
+          <Cockpit
           title={this.props.appTitle}
           onClick={this.toggleNamesHandler}
           showPersons={this.state.showPersons}
           persons={this.state.persons}
-        />
+        />):null}
         {list}
       </div>
     );

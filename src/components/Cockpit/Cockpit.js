@@ -11,10 +11,21 @@ const cockpit = (props) => {
     // }, [props.persons]) //What state change triggers this effect
     useEffect(() => {
         console.log('Cockpit.js useEffect()')
-        setTimeout(()=>{
+        const timer=setTimeout(()=>{
             alert('Fetch Data From Cloud')
         }, 1000)
+        return () => {
+            clearTimeout(timer)
+            console.log('Cockpit.js cleanup function')
+        }
     }, [])
+
+    useEffect(()=>{
+        console.log('Cockpit.js 2nd useEffect()')
+        return () => {
+            console.log('Cockpit.js 2nd cleanup function')
+        }
+    }) 
     const assignedClasses = [];
     let btnClass = []
     if (props.showPersons) {
