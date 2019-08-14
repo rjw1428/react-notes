@@ -87,10 +87,6 @@ class App extends Component {
       </div>
     );
   }
-
-  componentDidMount() {
-    console.log('App.js componentDidMount')
-  }
 }
 
 
