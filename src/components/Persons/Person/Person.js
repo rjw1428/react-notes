@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import styles from './Person.css';
 import Auxil from '../../hoc/Auxil'
 import withClass from '../../hoc/WithClass'
+import PropTypes from 'prop-types'
+
 class Person extends Component {
     render() {
         console.log(this.props.name + " is rendering...")
@@ -12,6 +14,13 @@ class Person extends Component {
                 <input key="el3" type="text" onChange={this.props.changed} value={this.props.name}></input>
             </Auxil>)
     };
+}
+
+Person.propTypes = {
+    click: PropTypes.func,
+    name: PropTypes.string,
+    age: PropTypes.number,
+    changed: PropTypes.func
 }
 
 export default withClass(Person, styles.Person)
