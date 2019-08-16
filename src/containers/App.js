@@ -93,7 +93,7 @@ class App extends Component {
             personsListLength={this.state.persons.length}
           />) : null}
         {list}
-        </Auxil>
+      </Auxil>
     );
   }
 }
