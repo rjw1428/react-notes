@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styles from './App.css';
 import Persons from '../components/Persons/Persons'
 import Cockpit from '../components/Cockpit/Cockpit';
-
+import WithClass from '../components/hoc/WithClass'
 class App extends Component {
   constructor(props) {
     super(props)
@@ -68,30 +68,30 @@ class App extends Component {
 
     if (this.state.showPersons) {
       list = (
-          <Persons
-            persons={this.state.persons}
-            clicked={this.deletePersonHandler}
-            changed={this.nameChangedHandler}
-          />
+        <Persons
+          persons={this.state.persons}
+          clicked={this.deletePersonHandler}
+          changed={this.nameChangedHandler}
+        />
       )
     }
 
     return (
-      <div className={styles.App}>
-        <button onClick={()=>{
-          this.setState({showCockpit:false})
-          }}>Remove Cockpit
+      <WithClass classes={styles.App}>
+        <button onClick={() => {
+          this.setState({ showCockpit: false })
+        }}>Remove Cockpit
         </button>
-        {this.state.showCockpit?(
+        {this.state.showCockpit ? (
           <Cockpit
-          title={this.props.appTitle}
-          onClick={this.toggleNamesHandler}
-          showPersons={this.state.showPersons}
-          // persons={this.state.persons}
-          personsListLength={this.state.persons.length}
-        />):null}
+            title={this.props.appTitle}
+            onClick={this.toggleNamesHandler}
+            showPersons={this.state.showPersons}
+            // persons={this.state.persons}
+            personsListLength={this.state.persons.length}
+          />) : null}
         {list}
-      </div>
+      </WithClass>
     );
   }
 }
