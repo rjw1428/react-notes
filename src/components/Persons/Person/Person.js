@@ -3,6 +3,7 @@ import styles from './Person.css';
 import Auxil from '../../hoc/Auxil'
 import withClass from '../../hoc/WithClass'
 import PropTypes from 'prop-types'
+import AuthContext from '../../../context/auth-context'
 
 class Person extends Component {
     constructor(props) {
@@ -17,16 +18,20 @@ class Person extends Component {
         console.log(this.props.name + " is rendering...")
         return (
             <Auxil>
+                <AuthContext.Consumer>
+                   {(context) => context.authenticated ? <p>Logged In</p> : <p>Unregisterd User</p>}
+                </AuthContext.Consumer>
                 <p key="el1" onClick={this.props.click}>My name is this.{this.props.name} and I am {Math.floor(Math.random() * 30)} ({this.props.age}) years old</p>
                 <p key="el2">{this.props.children}</p>
-                <input 
-                key="el3"
-                // ref={(inputEl) => {this.inputElement = inputEl}}
-                ref={this.inputElementRef}
-                type="text" 
-                onChange={this.props.changed} 
-                value={this.props.name} />
-            </Auxil>)
+                <input
+                    key="el3"
+                    // ref={(inputEl) => {this.inputElement = inputEl}}
+                    ref={this.inputElementRef}
+                    type="text"
+                    onChange={this.props.changed}
+                    value={this.props.name} />
+            </Auxil>
+        )
     };
 }
 

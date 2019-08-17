@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from 'react'
 import classes from './Cockpit.css'
-
+import AuthContext from '../../context/auth-context'
 
 const cockpit = (props) => {
     const toggleButtonRef = useRef(null)
-    
+
     // useEffect(() => {
     //     console.log('Cockpit.js useEffect()')
     //     setTimeout(()=>{
@@ -13,7 +13,7 @@ const cockpit = (props) => {
     // }, [props.persons]) //What state change triggers this effect
     useEffect(() => {
         console.log('Cockpit.js useEffect()')
-        const timer=setTimeout(()=>{
+        const timer = setTimeout(() => {
             alert('Fetch Data From Cloud')
         }, 1000)
         toggleButtonRef.current.click()
@@ -23,12 +23,12 @@ const cockpit = (props) => {
         }
     }, [])
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log('Cockpit.js 2nd useEffect()')
         return () => {
             console.log('Cockpit.js 2nd cleanup function')
         }
-    }) 
+    })
 
     const assignedClasses = [];
     let btnClass = []
@@ -47,9 +47,17 @@ const cockpit = (props) => {
             <p className={assignedClasses.join(' ')}>This is some description text.</p>
             <button
                 className={btnClass}
-                ref = {toggleButtonRef}
+                ref={toggleButtonRef}
                 onClick={props.onClick}
-                >Toggle</button>
+            >Toggle</button>
+            <AuthContext.Consumer>
+                {(context) => <button
+                    onClick={context.login}
+                >
+                    Log In
+            </button>}
+
+            </AuthContext.Consumer>
         </div>
     );
 }
