@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import classes from './Cockpit.css'
 
 
 const cockpit = (props) => {
+    const toggleButtonRef = useRef(null)
+    
     // useEffect(() => {
     //     console.log('Cockpit.js useEffect()')
     //     setTimeout(()=>{
@@ -14,6 +16,7 @@ const cockpit = (props) => {
         const timer=setTimeout(()=>{
             alert('Fetch Data From Cloud')
         }, 1000)
+        toggleButtonRef.current.click()
         return () => {
             clearTimeout(timer)
             console.log('Cockpit.js cleanup function')
@@ -26,6 +29,7 @@ const cockpit = (props) => {
             console.log('Cockpit.js 2nd cleanup function')
         }
     }) 
+
     const assignedClasses = [];
     let btnClass = []
     if (props.showPersons) {
@@ -43,6 +47,7 @@ const cockpit = (props) => {
             <p className={assignedClasses.join(' ')}>This is some description text.</p>
             <button
                 className={btnClass}
+                ref = {toggleButtonRef}
                 onClick={props.onClick}
                 >Toggle</button>
         </div>
